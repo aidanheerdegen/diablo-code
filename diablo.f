@@ -63,6 +63,8 @@ C----|--.---------.---------.---------.---------.---------.---------.-|-------|
  
       INTEGER N
       REAL*8  int_time 
+
+      character*256 input_dir = 'last_saved'
       
 
       WRITE(6,*) 
@@ -850,10 +852,10 @@ C----*|--.---------.---------.---------.---------.---------.---------.-|-------|
 c      FNAME='diablo.start'
       I = RANK+1
 
-           FNAME ='last_saved/diablo_'
+           FNAME = trim(input_dir) // '/diablo_'
      &        //CHAR(MOD(I,100)/10+48)
      &        //CHAR(MOD(I,10)+48) // '.start'
-           FNAME_TH ='last_saved/diablo_th01'
+           FNAME_TH = trim(input_dir) // '/diablo_th01'
      &        //CHAR(MOD(I,100)/10+48)
      &        //CHAR(MOD(I,10)+48) // '.start'
 
@@ -979,19 +981,19 @@ C----*|--.---------.---------.---------.---------.---------.---------.-|-------|
 
       I = RANK +1 
       IF (FINAL) THEN
-         FNAME='last_saved/diablo_'
+          FNAME = trim(input_dir) // '/diablo_'
      &        //CHAR(MOD(I,100)/10+48)
      &        //CHAR(MOD(I,10)+48) // '.res'
 
 
-          FNAME_TH='last_saved/diablo_th01'
+          FNAME_TH = trim(input_dir) // '/diablo_th01'
      &        //CHAR(MOD(I,100)/10+48)
      &        //CHAR(MOD(I,10)+48) // '.res'
       ELSE
-         FNAME='last_saved/diablo_'
+         FNAME = trim(input_dir) // '/diablo_'
      &        //CHAR(MOD(I,100)/10+48)
      &        //CHAR(MOD(I,10)+48) // '.saved'
-         FNAME_TH='last_saved/diablo_th01'
+         FNAME_TH = trim(input_dir) // '/diablo_th01'
      &        //CHAR(MOD(I,100)/10+48)
      &        //CHAR(MOD(I,10)+48) // '.saved'
 
